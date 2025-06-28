@@ -29,10 +29,10 @@ class NumArray {
 
 // without and base case
 // Apprach2
-class NumArray {
+class NumArray2 {
     int[] prefixArr;
 
-    public NumArray(int[] nums) {
+    public NumArray2(int[] nums) {
         prefixArr = new int[nums.length + 1];
         prefixArr[0] = 0;
         for (int i = 0; i < nums.length; i++) {
