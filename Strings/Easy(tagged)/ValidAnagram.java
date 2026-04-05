@@ -39,12 +39,38 @@ class Solution {
         return Arrays.equals(sArray, tArray);
     }
 }
-
 // Time Complexity : O(n log n) due to sorting
 // Space Complexity : O(1) if we ignore the space used for sorting, otherwise
 // O(n) due to the character arrays
-// Third solution using an array to count characters (assuming only lowercase
-// letters)
+
+
+
+// Another solution using  hashmap to count characters:
+import java.util.HashMap;
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+        for (char c : t.toCharArray()) {
+            charCount.put(c, charCount.get(c) - 1);
+        }
+        for (int count : charCount.values()) {
+            if (count != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+// Time Complexity : O(n) where n is the length of the input strings
+// Space Complexity : O(n) due to the hashmap storing character counts
+
+// Optimal solution using a fixed-size array to count characters (assuming input consists of lowercase letters only):
 class Solution {
     public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
